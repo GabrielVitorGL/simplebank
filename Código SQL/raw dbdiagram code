@@ -28,7 +28,7 @@ Table transferencias as transf {
   de_id_conta bigint [ref: > contas.id] // Referencia "id" da tabela "contas"
   para_id_conta bigint [ref: > contas.id]
   
-  quantia bigint [not null, note:'esse valor so pode ser positivo'] // quantia que será transacionada
+  quantia bigint [not null, note: 'esse valor so pode ser positivo'] // quantia que será transacionada
   criada_em timestamptz [not null, default: `now()`]
 
   indexes {
