@@ -12,7 +12,7 @@ Table contas {
 
 Table mudancas as mud {
   id bigserial [pk] // chave primária
-  id_conta bigint [ref: > contas.id] // Referencia "id" da tabela "contas"
+  id_conta bigint [ref: > contas.id, not null] // Referencia "id" da tabela "contas"
   // Isso é uma relação de um pra muitos, pois uma aconta pode ter várias entradas pra mudar seu saldo
   quantia bigint [not null, note:'esse valor pode ser negativo ou positivo']
   criada_em timestamptz [not null, default: `now()`]
@@ -25,10 +25,10 @@ Table mudancas as mud {
 Table transferencias as transf {
   id bigserial [pk] // chave primária
   
-  de_id_conta bigint [ref: > contas.id] // Referencia "id" da tabela "contas"
-  para_id_conta bigint [ref: > contas.id]
+  de_id_conta bigint [ref: > contas.id, not null] // Referencia "id" da tabela "contas"
+  para_id_conta bigint [ref: > contas.id, not null]
   
-  quantia bigint [not null, note: 'esse valor so pode ser positivo'] // quantia que será transacionada
+  quantia bigint [not null, note:'esse valor so pode ser positivo'] // quantia que será transacionada
   criada_em timestamptz [not null, default: `now()`]
 
   indexes {

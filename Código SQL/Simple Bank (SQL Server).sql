@@ -9,7 +9,7 @@ GO
 
 CREATE TABLE [mudancas] (
   [id] bigserial PRIMARY KEY,
-  [id_conta] bigint,
+  [id_conta] bigint NOT NULL,
   [quantia] bigint NOT NULL,
   [criada_em] timestamptz NOT NULL DEFAULT (now())
 )
@@ -17,8 +17,8 @@ GO
 
 CREATE TABLE [transferencias] (
   [id] bigserial PRIMARY KEY,
-  [de_id_conta] bigint,
-  [para_id_conta] bigint,
+  [de_id_conta] bigint NOT NULL,
+  [para_id_conta] bigint NOT NULL,
   [quantia] bigint NOT NULL,
   [criada_em] timestamptz NOT NULL DEFAULT (now())
 )
