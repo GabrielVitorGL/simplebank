@@ -1,0 +1,39 @@
+Table contas {
+  id bigserial [pk] // Chave primária
+  dono varchar [not null]// Também pode ser do tipo text
+  saldo bigint [not null] // Colocamos "not null" em todas que não precisam ser únicas
+  moeda varchar [not null]
+  criada_em timestamptz [not null, default: `now()`]// Inclui o fuso horário
+
+  indexes {
+    dono
+  }
+}
+
+Table mudancas as mud {
+  id bigserial [pk] // chave primária
+  id_conta bigint [ref: > contas.id] // Referencia "id" da tabela "contas"
+  // Isso é uma relação de um pra muitos, pois uma aconta pode ter várias entradas pra mudar seu saldo
+  quantia bigint [not null, note:'esse valor pode ser negativo ou positivo']
+  criada_em timestamptz [not null, default: `now()`]
+
+  indexes {
+    id_conta
+  }
+}
+
+Table transferencias as transf {
+  id bigserial [pk] // chave primária
+  
+  de_id_conta bigint [ref: > contas.id] // Referencia "id" da tabela "contas"
+  para_id_conta bigint [ref: > contas.id]
+  
+  quantia bigint [not null, note:'esse valor so pode ser positivo'] // quantia que será transacionada
+  criada_em timestamptz [not null, default: `now()`]
+
+  indexes {
+    de_id_conta
+    para_id_conta
+    (de_id_conta, para_id_conta) // Para procurar por todas as transferencias de uma conta para a outra, vamos juntar os índices de "de_id_conta" e "para_id_conta"
+  }
+}
