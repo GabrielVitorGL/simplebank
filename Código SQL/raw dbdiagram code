@@ -1,5 +1,5 @@
 Table contas {
-  id bigserial [pk] // Chave primária
+  id bigserial [pk] // chave primária
   dono varchar [not null]// Também pode ser do tipo text
   saldo bigint [not null] // Colocamos "not null" em todas que não precisam ser únicas
   moeda varchar [not null]
