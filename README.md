@@ -14,9 +14,9 @@ Simplebank project using Golang
 ### 24/01
 
  #### Primeira aula - Database Design (Banco de dados)
-   *Desenhar um esquema de Banco de Dados do SQL no dbdiagram.io
-   *Salvar esse esquema como PDF ou PNG e compartilhá-lo
-   *Gerar o código desse esquema no SQL Server
+   * Desenhar um esquema de Banco de Dados do SQL no dbdiagram.io
+   * Salvar esse esquema como PDF ou PNG e compartilhá-lo
+   * Gerar o código desse esquema no SQL Server
 
  #### Segunda aula - Docker + Postgres + TablePlus
   * Instalar o Docker 
