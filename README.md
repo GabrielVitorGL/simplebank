@@ -13,19 +13,19 @@ Simplebank project using Golang
 
 ### 24/01
 
- #### Primeira aula - Database Design (Banco de dados)
+ #### 1º - Database Design (Banco de dados)
    * Desenhar um esquema de Banco de Dados do SQL no dbdiagram.io
    * Salvar esse esquema como PDF ou PNG e compartilhá-lo
    * Gerar o código desse esquema no SQL Server
 
- #### Segunda aula - Docker + Postgres + TablePlus
+ #### 2º - Docker + Postgres + TablePlus
   * Instalar o Docker 
   * Instalar e iniciar um container do PostgreSQL
   * Utilizar alguns comandos básicos do docker
   * Preparar e utilizar o TablePlus pra conectar e interagir com o Postgres
   * Usar o TablePlus para rodar o script SQL que geramos na aula 1 para criar o esquema de banco de dados do nosso projeto
 
- #### Terceira aula - Escrevendo e rodando a migração do banco de dados
+ #### 3º - Escrevendo e rodando a migração do banco de dados
   * Instalar a biblioteca Migrate
   * Escrever os códigos que iremos utilizar
   * Rodar os comandos
@@ -33,12 +33,12 @@ Simplebank project using Golang
  
 ### 25/01
  
- #### Quarta aula - Fazendo um código em Go para realizar o CRUD do nosso banco de dados
+ #### 4º - Fazendo um código em Go para realizar o CRUD do nosso banco de dados
   * Aprender como utilizar a biblioteca SQLC para manusear o banco de dados
   * Fazer o código que realizará a inserção, leitura atualização e exclusão de informações no nosso banco de dados
   * Rodar e testar o código
   
- #### Quinta aula - Inserindo valores no banco de dados usando o código da última aula
+ #### 5º - Inserindo valores no banco de dados usando o código da última aula
   * Criar o código do arquivo main_test
   * Criar o código do arquivo conta_test
   * Testar os códigos
