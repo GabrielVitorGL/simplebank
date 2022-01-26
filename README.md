@@ -31,12 +31,12 @@ Simplebank project using Golang
   * Rodar os comandos
   * Criar um makefile para rodar todos os comandos automaticamente usando atalhos sempre que precisarmos iniciar ou fechar o nosso banco de dados
  
-###25/01
+### 25/01
  
- ####Quarta aula - Fazendo um código em Go para realizar o CRUD do nosso banco de dados
-  *Aprender como utilizar a biblioteca SQLC para manusear o banco de dados
-  *Fazer o código que realizará a inserção, leitura atualização e exclusão de informações no nosso banco de dados
-  *Rodar e testar o código
+ #### Quarta aula - Fazendo um código em Go para realizar o CRUD do nosso banco de dados
+  * Aprender como utilizar a biblioteca SQLC para manusear o banco de dados
+  * Fazer o código que realizará a inserção, leitura atualização e exclusão de informações no nosso banco de dados
+  * Rodar e testar o código
   
  #### Quinta aula - Inserindo valores no banco de dados usando o código da última aula
   * Criar o código do arquivo main_test
