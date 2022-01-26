@@ -1,0 +1,27 @@
+--OBJETIVOS DESTE PROJETO:
+
+1- Criar a conta da pessoa com seus dados, e armazenar seu saldo
+
+2- Gravar todas as mudanças na conta, fazendo um registro a cada mudança que ocorrer
+
+3- Transferência de dinheiro entre duas contas de forma funcional
+
+--CONTEÚDO DAS AULAS JÁ REALIZADAS:
+
+Primeira aula - Database Design (Banco de dados)
+  *Desenhar um esquema de Banco de Dados do SQL no dbdiagram.io
+  *Salvar esse esquema como PDF ou PNG e compartilhá-lo
+  *Gerar o código desse esquema no SQL Server
+
+Segunda aula - Docker + Postgres + TablePlus
+ *Instalar o Docker 
+ *Instalar e iniciar um container do PostgreSQL
+ *Utilizar alguns comandos básicos do docker
+ *Preparar e utilizar o TablePlus pra conectar e interagir com o Postgres
+ *Usar o TablePlus para rodar o script SQL que geramos na aula 1 para criar o esquema de banco de dados do nosso projeto
+
+Terceira aula - Escrevendo e rodando a migração do banco de dados
+ *Instalar a biblioteca Migrate
+ *Escrever os códigos que iremos utilizar
+ *Rodar os comandos
+ *Criar um makefile para rodar todos os comandos automaticamente usando atalhos sempre que precisarmos iniciar ou fechar o nosso banco de dados
