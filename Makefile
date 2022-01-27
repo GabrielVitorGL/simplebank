@@ -21,7 +21,7 @@ migratedown:
 
 sqlc:
 	powershell -command "docker run --rm -v $${pwd}:/src -w /src kjconroy/sqlc generate"
- 
+
 test:
 	go test -v -cover ./...
 
