@@ -58,6 +58,7 @@ Simplebank project using Golang
      * O status do banco de dados deve ser válido após conluir a transação
      * As transações devem ser isoladas e não afetar uma as outras
      * Criar o registro das transações concluídas com sucesso
+   * Criar o arquivo store_test.go que usaremos para testar se todas as funções criadas estão funcionando da forma como planejamos
    ##### Passos que serão usados para criar uma transação (Ex: 10 reais da conta 1 para a conta 2):
    * Fazer o registro da transação com valor 10
    * Criar uma movimentação na conta 1 com valor -10
