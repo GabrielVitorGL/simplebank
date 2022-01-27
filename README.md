@@ -81,11 +81,12 @@ Simplebank project using Golang
    * Otimizar esse código para não conter texto duplicado
 
  #### 9º aula - Entendendo os níveis de isolamento em um banco de dados
-   * Entender cada um dos níveis de isolamentos no mysql, sendo eles:
+   * Entender cada um dos níveis de isolamento, sendo eles:
       * READ UNCOMMITTED
       * READ COMMITTED 
       * REPEATABLE READ 
       * SERIALIZABLE
+   * Entender como eles funcionam no mysql
    * Entender como eles funcionam no postgres
      #### Como cada nível de isolamento funciona no MySQL e no Postgres:
        <p float = left>
