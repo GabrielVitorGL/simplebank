@@ -7,6 +7,31 @@ import (
 	"context"
 )
 
+const adicionarSaldoConta = `-- name: AdicionarSaldoConta :one
+UPDATE contas 
+SET saldo = saldo + $1
+WHERE id = $2
+RETURNING id, dono, saldo, moeda, criada_em
+`
+
+type AdicionarSaldoContaParams struct {
+	Quantia int64 `json:"quantia"`
+	ID      int64 `json:"id"`
+}
+
+func (q *Queries) AdicionarSaldoConta(ctx context.Context, arg AdicionarSaldoContaParams) (Conta, error) {
+	row := q.db.QueryRowContext(ctx, adicionarSaldoConta, arg.Quantia, arg.ID)
+	var i Conta
+	err := row.Scan(
+		&i.ID,
+		&i.Dono,
+		&i.Saldo,
+		&i.Moeda,
+		&i.CriadaEm,
+	)
+	return i, err
+}
+
 const atualizarConta = `-- name: AtualizarConta :one
 UPDATE contas 
 SET saldo = $2
@@ -120,6 +145,26 @@ LIMIT 1
 
 func (q *Queries) ObterConta(ctx context.Context, id int64) (Conta, error) {
 	row := q.db.QueryRowContext(ctx, obterConta, id)
+	var i Conta
+	err := row.Scan(
+		&i.ID,
+		&i.Dono,
+		&i.Saldo,
+		&i.Moeda,
+		&i.CriadaEm,
+	)
+	return i, err
+}
+
+const obterContaParaAtualizar = `-- name: ObterContaParaAtualizar :one
+SELECT id, dono, saldo, moeda, criada_em FROM contas
+WHERE id = $1 
+LIMIT 1
+FOR NO KEY UPDATE
+`
+
+func (q *Queries) ObterContaParaAtualizar(ctx context.Context, id int64) (Conta, error) {
+	row := q.db.QueryRowContext(ctx, obterContaParaAtualizar, id)
 	var i Conta
 	err := row.Scan(
 		&i.ID,

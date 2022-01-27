@@ -12,6 +12,12 @@ SELECT * FROM contas
 WHERE id = $1 
 LIMIT 1;
 
+-- name: ObterContaParaAtualizar :one
+SELECT * FROM contas
+WHERE id = $1 
+LIMIT 1
+FOR NO KEY UPDATE;
+
 -- name: ListarContas :many
 SELECT * FROM contas
 ORDER BY id
@@ -22,6 +28,12 @@ OFFSET $2;
 UPDATE contas 
 SET saldo = $2
 WHERE id = $1
+RETURNING *;
+
+-- name: AdicionarSaldoConta :one
+UPDATE contas 
+SET saldo = saldo + sqlc.arg(quantia)
+WHERE id = sqlc.arg(id)
 RETURNING *;
 
 -- name: DeletarConta :exec

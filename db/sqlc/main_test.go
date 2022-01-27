@@ -11,18 +11,21 @@ import (
 
 const (
 	dbDriver = "postgres"
-	dbSource = "postgresql://root:jogos3dg@localhost:5432/simple_bank?sslmode=disable"
+	dbSource = "postgresql://root:pass412@localhost:5432/simple_bank?sslmode=disable"
 )
 
 var testQueries *Queries
+var testDB *sql.DB
 
 func TestMain(m *testing.M) {
-	conn, err := sql.Open(dbDriver, dbSource)
+	var err error
+
+	testDB, err = sql.Open(dbDriver, dbSource)
 	if err != nil {
 		log.Fatal("nao foi possivel se conectar ao banco de dados:", err)
 	}
 
-	testQueries = New(conn)
+	testQueries = New(testDB)
 
 	os.Exit(m.Run())
 }
