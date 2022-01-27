@@ -54,10 +54,10 @@ Simplebank project using Golang
  #### 6º aula - Implementando a transação de banco de dados usando Golang
    * Criar o arquivo store.go que executará as transações
    * Usaremos o princípio ACID - Atomiticy, Consistency, Isolation, Durability. Isso para certificar que:
-    * Todas os passos devem ser completos com sucesso. Caso contrário a transação deverá falhar sem alterar o banco de dados.
-    * O status do banco de dados deve ser válido após conluir a transação
-    * As transações devem ser isoladas e não afetar uma as outras
-    * Criar o registro das transações concluídas com sucesso
+     * Todas os passos devem ser completos com sucesso. Caso contrário a transação deverá falhar sem alterar o banco de dados.
+     * O status do banco de dados deve ser válido após conluir a transação
+     * As transações devem ser isoladas e não afetar uma as outras
+     * Criar o registro das transações concluídas com sucesso
    ##### Passos que serão usados para criar uma transação (Ex: 10 reais da conta 1 para a conta 2):
    * Fazer o registro da transação com valor 10
    * Criar uma movimentação na conta 1 com valor -10
