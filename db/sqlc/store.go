@@ -48,10 +48,10 @@ type TransferTxParams struct {
 // TransferTxResult é o resultado de uma transação
 type TransferTxResult struct {
 	Transferencia Transferencia `json:"transferencia"`
-	DeConta Conta `json:"de_conta"`
-	ParaConta Conta `json:"para_conta"`
-	DeMudanca Mudanca `json:"de_mudanca"`
-	ParaMudanca Mudanca `json:"para_mudanca"`
+	DeConta       Conta         `json:"de_conta"`
+	ParaConta     Conta         `json:"para_conta"`
+	DeMudanca     Mudanca       `json:"de_mudanca"`
+	ParaMudanca   Mudanca       `json:"para_mudanca"`
 }
 
 // TransferTx fará uma transação de valores de uma conta para a outra
@@ -63,9 +63,9 @@ func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (Trans
 		var err error
 
 		resultado.Transferencia, err = q.CriarTransferencia(ctx, CriarTransferenciaParams{
-			DeIDConta: arg.DeIDConta,
+			DeIDConta:   arg.DeIDConta,
 			ParaIDConta: arg.ParaIDConta,
-			Quantia: arg.Quantia,
+			Quantia:     arg.Quantia,
 		})
 		if err != nil {
 			return err
@@ -88,25 +88,37 @@ func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (Trans
 		}
 
 		// atualizar saldo
-
-		resultado.DeConta, err = q.AdicionarSaldoConta(ctx, AdicionarSaldoContaParams{
-			Quantia: -arg.Quantia,
-			ID: arg.DeIDConta,
-		})
-		if err != nil {
-			return err
-		}
-
-		resultado.ParaConta, err = q.AdicionarSaldoConta(ctx, AdicionarSaldoContaParams{
-			Quantia: arg.Quantia,
-			ID: arg.ParaIDConta,
-		})
-		if err != nil {
-			return err
+		if arg.DeIDConta < arg.ParaIDConta {
+			resultado.DeConta, resultado.ParaConta, err = AdicionarDinheiro(ctx, q, arg.DeIDConta, -arg.Quantia, arg.ParaIDConta, arg.Quantia)
+		} else {
+			resultado.ParaConta, resultado.DeConta, err = AdicionarDinheiro(ctx, q, arg.ParaIDConta, arg.Quantia, arg.DeIDConta, -arg.Quantia)
 		}
 
 		return nil
 	})
 
 	return resultado, err
+}
+
+func AdicionarDinheiro (
+	ctx context.Context,
+	q *Queries,
+	IDconta1 int64,
+	quantia1 int64,
+	IDconta2 int64,
+	quantia2 int64,
+ ) (conta1 Conta, conta2 Conta, err error) {
+	conta1, err = q.AdicionarSaldoConta(ctx, AdicionarSaldoContaParams{
+		ID: IDconta1,
+		Quantia: quantia1,
+	})
+	if err != nil {
+		return
+	}
+
+	conta2, err = q.AdicionarSaldoConta(ctx, AdicionarSaldoContaParams{
+		ID: IDconta2,
+		Quantia: quantia2,
+	})
+	return
 }

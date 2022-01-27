@@ -114,3 +114,54 @@ func TestTransferTx(t *testing.T) {
 	require.Equal(t, conta1.Saldo-int64(n)*quantia, Conta1Atualizada.Saldo)
 	require.Equal(t, conta2.Saldo+int64(n)*quantia, Conta2Atualizada.Saldo)
 }
+
+func TestTransferTxDeadLock(t *testing.T) {
+	store := NewStore(testDB)
+
+	conta1 := criarContaAleatoria(t)
+	conta2 := criarContaAleatoria(t)
+	fmt.Println(">> antes:", conta1.Saldo, conta2.Saldo)
+
+	// fazer n transações para teste
+	n := 10
+	quantia := int64(10) // valor que será transacionado
+	errs := make(chan error)
+
+
+	for i := 0; i < n; i++ {
+		de_id_conta := conta1.ID
+		para_id_conta := conta2.ID
+
+		if i % 2 == 1 {
+			de_id_conta = conta2.ID
+			para_id_conta = conta1.ID
+		}
+		go func() {
+			ctx := context.Background()
+			_, err := store.TransferTx(ctx, TransferTxParams{
+				DeIDConta:   de_id_conta,
+				ParaIDConta: para_id_conta,
+				Quantia:     quantia,
+			})
+
+			errs <- err // mandando o valor de err para o canal errs, para que possamos checar esses erros fora do loop
+		}()
+	}
+
+	// checar resultados
+	for i := 0; i < n; i++ {
+		err := <-errs
+		require.NoError(t, err)
+	}
+
+	//checar o saldo final das duas contas
+	Conta1Atualizada, err := testQueries.ObterConta(context.Background(), conta1.ID)
+	require.NoError(t, err)
+
+	Conta2Atualizada, err := testQueries.ObterConta(context.Background(), conta2.ID)
+	require.NoError(t, err)
+
+	fmt.Println(">> depois:", conta1.Saldo, conta2.Saldo)
+	require.Equal(t, conta1.Saldo, Conta1Atualizada.Saldo)
+	require.Equal(t, conta2.Saldo, Conta2Atualizada.Saldo)
+}
