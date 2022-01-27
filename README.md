@@ -88,5 +88,7 @@ Simplebank project using Golang
       * SERIALIZABLE
    * Entender como eles funcionam no postgres
    ##### Como cada nível de isolamento funciona no MySQL e no Postgres:
-   <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='400' float=left>
-   <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='400' float=right>
+   <p float = left>
+    <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='400'>
+    <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='400'>
+   </p>
