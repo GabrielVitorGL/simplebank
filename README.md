@@ -80,3 +80,12 @@ Simplebank project using Golang
    * Resolvendo esses deadlocks colocando os processos da atualização da conta na mesma ordem
    * Otimizar esse código para não conter texto duplicado
 
+ #### 9º aula - Entendendo os níveis de isolamento em um banco de dados
+   * Entender cada um dos níveis de isolamentos no mysql, sendo eles:
+      * READ UNCOMMITTED
+      * READ COMMITTED 
+      * REPEATABLE READ 
+      * SERIALIZABLE
+   * Entender como eles funcionam no postgres
+   ![alt text](https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true)
+   ![alt text](https://github.com/GabrielVitorGL/draco-widget/blob/main/demophoto.jpg)
