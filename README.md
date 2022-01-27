@@ -88,5 +88,5 @@ Simplebank project using Golang
       * SERIALIZABLE
    * Entender como eles funcionam no postgres
    ![alt text](https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true)
-   ![alt text](https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true)
-   <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='150'>
+   ![alt text](https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true | width='500')
+   <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='500'>
