@@ -73,10 +73,10 @@ Simplebank project using Golang
  #### 7º aula - Bloqueio de transação de banco de dados e como lidar com deadlock em Golang
    * Usar o CDD para fazer a atualização do saldo nas contas
    * Observar e aprender como resolver o deadlock 
-   * Melhorar a função que atualiza a conta para se tornar mais otimizada
+   * Melhorar as funções que atualizavam a conta para se tornar mais otimizada, juntando-as em apenas uma função que já realiza todo o processo
    
  #### 8º aula - Se aprofundando mais em como evitar deadlock no banco de dados
    * Observando possíveis deadlocks que podem ocorrer no nosso banco de dados que não tinhamos percebido ainda
    * Resolvendo esses deadlocks colocando os processos da atualização da conta na mesma ordem
-   * Otimizar esse código para não conter código duplicado
+   * Otimizar esse código para não conter texto duplicado
 
