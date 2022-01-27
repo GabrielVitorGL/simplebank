@@ -50,3 +50,33 @@ Simplebank project using Golang
    * Criar o código do arquivo mudanca_test
    * Criar o código do arquivo transferencia_test
    * Testar todos os códigos, que dessa vez estão preenchendo todos os dados do nosso banco de dados com valores aleatórios para teste
+ 
+ ### 26/01
+ 
+ #### 6º aula - Implementando a transação de banco de dados usando Golang
+   * Criar o arquivo store.go que executará as transações
+   * Usaremos o princípio ACID - Atomiticy, Consistency, Isolation, Durability. Isso para certificar que:
+     * Todas os passos devem ser completos com sucesso. Caso contrário a transação deverá falhar sem alterar o banco de dados.
+     * O status do banco de dados deve ser válido após conluir a transação
+     * As transações devem ser isoladas e não afetar uma as outras
+     * Criar o registro das transações concluídas com sucesso
+   * Criar o arquivo store_test.go que usaremos para testar se todas as funções criadas estão funcionando da forma como planejamos
+   ##### Passos que serão usados para criar uma transação (Ex: 10 reais da conta 1 para a conta 2):
+   * Fazer o registro da transação com valor 10
+   * Criar uma movimentação na conta 1 com valor -10
+   * Criar uma movimentação na conta 1 com valor +10
+   * Retirar 10 da conta 1
+   * Adicionar 10 na conta 2
+
+### 27/01
+
+ #### 7º aula - Bloqueio de transação de banco de dados e como lidar com deadlock em Golang
+   * Usar o CDD para fazer a atualização do saldo nas contas
+   * Observar e aprender como resolver o deadlock 
+   * Melhorar a função que atualiza a conta para se tornar mais otimizada
+   
+ #### 8º aula - Se aprofundando mais em como evitar deadlock no banco de dados
+   * Observando possíveis deadlocks que podem ocorrer no nosso banco de dados que não tinhamos percebido ainda
+   * Resolvendo esses deadlocks colocando os processos da atualização da conta na mesma ordem
+   * Otimizar esse código para não conter código duplicado
+
