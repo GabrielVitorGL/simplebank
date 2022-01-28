@@ -93,3 +93,9 @@ Simplebank project using Golang
       <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='370'>
       <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='370'>
      </p>
+     
+
+ #### 10º aula - Configurar o Github Actions para rodar os unit tests em Go
+   * Criar um workflow no Github
+   * Escrever o código da nossa action
+   * Rodar o código e tratar os erros até que dê tudo certo
