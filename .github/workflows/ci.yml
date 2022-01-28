@@ -8,10 +8,9 @@ on:
 
 jobs:
 
-  test:
-    #uses: actions/checkout@v2
+  build:
 
-    #name: Test
+    name: Test
     runs-on: ubuntu-latest
     steps:
 
@@ -19,10 +18,10 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
-      #id: go
+      id: go
 
-    #-name: checar o codigo no diretorio Go module 
-    #uses: actions/checkout@v2
+    -name: checar o codigo no diretorio Go module 
+    uses: actions/checkout@v2
 
     - name: Test
       run: make test
