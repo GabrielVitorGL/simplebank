@@ -2,13 +2,14 @@ name: ci-test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
 
-  build:
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
 
