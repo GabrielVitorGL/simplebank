@@ -53,7 +53,7 @@ func (q *Queries) ListarMudancas(ctx context.Context, arg ListarMudancasParams) 
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Mudanca
+	items := []Mudanca{}
 	for rows.Next() {
 		var i Mudanca
 		if err := rows.Scan(

@@ -114,7 +114,7 @@ func (q *Queries) ListarContas(ctx context.Context, arg ListarContasParams) ([]C
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Conta
+	items := []Conta{}
 	for rows.Next() {
 		var i Conta
 		if err := rows.Scan(
