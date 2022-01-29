@@ -98,4 +98,12 @@ Simplebank project using Golang
  #### 10º aula - Configurar o Github Actions para rodar os unit tests em Go
    * Criar um workflow no Github
    * Escrever o código da nossa action
-   * Rodar o código e tratar os erros até que dê tudo certo
+   * Rodar o código e tratar os erros até que consigamos rodar os testes diretamente do github sem erros
+
+### 28/01
+
+ #### 11º aula - Implementar a API HTTP RESTful no Go usando o Gin
+   * Escrever o código dos arquivos conta.go e server.go
+   * Escrever o código do arquivo main.go que iniciará o servidor
+   * Baixar e utilizar o Postman para visualizar o servidor 
+   * Criar os requests para Criar a conta, Obter a conta e Listar contas
