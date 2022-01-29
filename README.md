@@ -107,7 +107,7 @@ Simplebank project using Golang
    * Escrever o código do arquivo main.go que iniciará o servidor
    * Baixar e utilizar o Postman para visualizar o servidor 
    * Criar os requests para:
-|               | Método        | URL do request                                  | Customizações                                                               |
+|        a      | Método        | URL do request                                  | Customizações                                                               |
 | ------------- | ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
 | Criar Conta   | POST          | http://localhost:8080/contas                    | Body > raw > JSON > definir o dono da conta e a moeda                       |
 | Obter Conta   | GET           | http://localhost:8080/contas/1                  | no lugar de 1 será o ID da conta que você deseja obter                      |
