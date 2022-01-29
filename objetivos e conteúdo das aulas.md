@@ -89,7 +89,27 @@ Simplebank project using Golang
    * Entender como eles funcionam no mysql
    * Entender como eles funcionam no postgres
      #### Como cada nível de isolamento funciona no MySQL e no Postgres:
-       <p float = left>
-        <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='400'>
-        <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='400'>
-       </p>
+     <p float = left>
+      <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='370'>
+      <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='370'>
+     </p>
+     
+
+ #### 10º aula - Configurar o Github Actions para rodar os unit tests em Go
+   * Criar um workflow no Github
+   * Escrever o código da nossa action
+   * Rodar o código e tratar os erros até que consigamos rodar os testes diretamente do github sem erros
+
+### 28/01
+
+ #### 11º aula - Implementar a API HTTP RESTful no Go usando o Gin
+   * Escrever o código dos arquivos conta.go e server.go
+   * Escrever o código do arquivo main.go que iniciará o servidor
+   * Baixar e utilizar o Postman para visualizar o servidor 
+   * Criar os requests para:
+ 
+   | Função        | Método        | URL do request                                  | Customizações                                                               |
+   | ------------- | ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
+   | Criar Conta   | POST          | http://localhost:8080/contas                    | Body > raw > JSON > definir o dono da conta e a moeda                       |
+   | Obter Conta   | GET           | http://localhost:8080/contas/1                  | no lugar de 1 será o ID da conta que você deseja obter                      |
+   | Listar Contas | GET           | http://localhost:8080/contas?id_pag=1&tam_pag=5 | em 1 você colocará o número da página, e em 5 o número de contas por página |
