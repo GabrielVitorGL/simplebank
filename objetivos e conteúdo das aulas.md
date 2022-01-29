@@ -106,7 +106,7 @@ Simplebank project using Golang
    * Escrever o código dos arquivos conta.go e server.go
    * Escrever o código do arquivo main.go que iniciará o servidor
    * Baixar e utilizar o Postman para visualizar o servidor 
-   * Criar os requests para:
+   * Criar os seguintes requests:
  
    | Função        | Método        | URL do request                                  | Customizações                                                               |
    | ------------- | ------------- | ----------------------------------------------- | --------------------------------------------------------------------------- |
