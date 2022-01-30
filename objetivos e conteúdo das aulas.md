@@ -113,3 +113,11 @@ Simplebank project using Golang
    | Criar Conta   | POST          | http://localhost:8080/contas                    | Body > raw > JSON > definir o dono da conta e a moeda                       |
    | Obter Conta   | GET           | http://localhost:8080/contas/1                  | no lugar de 1 será o ID da conta que você deseja obter                      |
    | Listar Contas | GET           | http://localhost:8080/contas?id_pag=1&tam_pag=5 | em 1 você colocará o número da página, e em 5 o número de contas por página |
+   
+### 29/01
+
+ #### 12º aula - Criar e carregar um arquivo config & Variáveis de ambiente em Golang usando o Viper
+   * Fazer um arquivo.env que conterá as configurações desejadas
+   * Criar o arquivo config.go
+   * Usar o Viper para carregar essas configurações
+   * Iniciar o servidor e fazer os testes no Postman para checar se tudo funcionou
