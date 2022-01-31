@@ -10,7 +10,7 @@ import (
 
 type criarContaRequerimentos struct {
 	Dono  string `json:"dono" binding:"required"`
-	Moeda string `json:"moeda" binding:"required,oneof=USD GBP EUR LTC BRL RUB CAD CST CHE CHW BTN CAT NZDT CST HKT CNY HKD COP COU CRC"`
+	Moeda string `json:"moeda" binding:"required,moeda"`
 	// Não colocamos o saldo pois ele será 0, quando a conta for criada
 }
 
@@ -55,6 +55,8 @@ func (servidor *Servidor) obterConta(ctx *gin.Context) {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
 			return
 		}
+
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
 		return
 	}
 
