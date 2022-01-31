@@ -128,8 +128,8 @@ Simplebank project using Golang
    * Criar o arquivo transferencia.go na pasta api que será responsável por fazer a transferencia de dinheiro entre contas
    * Testar no Postman se a API está funcionando
   
-   | Função      | Método | URL do request                       | Customizações                                                               |
-   | ----------- | ------ | ------------------------------------ | --------------------------------------------------------------------------- |
-   | Criar Conta | POST   | http://localhost:8080/transferencias | Body > raw > JSON > definir: de_id_conta, para_id_conta, quantia, moeda     |
+   | Função              | Método | URL do request                       | Customizações                                                               |
+   | ------------------- | ------ | ------------------------------------ | --------------------------------------------------------------------------- |
+   | Criar Transferencia | POST   | http://localhost:8080/transferencias | Body > raw > JSON > definir: de_id_conta, para_id_conta, quantia, moeda     |
    
    * Retirar a opção "oneof" de nossas API e fazer essa verificação de uma forma mais otimizada, e com menos chances de cometer erros caso fossemos trabalhar com centenas de tipos de moedas
