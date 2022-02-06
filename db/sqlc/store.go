@@ -5,22 +5,25 @@ import (
 	"database/sql"
 	"fmt"
 )
-
+type Store interface {
+	Querier
+	TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error)
+}
 // Store irá providenciar todas as funções para executar as queries do banco de dados e as transações
-type Store struct {
+type SQLStore struct {
 	*Queries
 	db *sql.DB
 }
 
-func NewStore(db *sql.DB) *Store {
-	return &Store{
+func NewStore(db *sql.DB) Store {
+	return &SQLStore{
 		db:      db,
 		Queries: New(db),
 	}
 }
 
 // Executará uma função com uma transação do banco de dados
-func (store *Store) execTx(ctx context.Context, fn func(*Queries) error) error {
+func (store *SQLStore) execTx(ctx context.Context, fn func(*Queries) error) error {
 	tx, err := store.db.BeginTx(ctx, nil)
 	if err != nil {
 		return err
@@ -56,7 +59,7 @@ type TransferTxResult struct {
 
 // TransferTx fará uma transação de valores de uma conta para a outra
 // Criará um registro da transação e atualizará o valor na conta com uma única transação no banco de dados
-func (store *Store) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
+func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
 	var resultado TransferTxResult // Criando uma variável do tipo TransferTxResult, por enquanto vazia
 
 	err := store.execTx(ctx, func(q *Queries) error {

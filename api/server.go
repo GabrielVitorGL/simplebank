@@ -9,12 +9,12 @@ import (
 
 // esse servidor será responsável por fazer os requests HTTP para nosso serviço bancário
 type Servidor struct {
-	store    *db.Store
+	store    db.Store
 	roteador *gin.Engine
 }
 
 // Criará um servidor HTTP e irá prepará-lo
-func NovoServidor(store *db.Store) *Servidor {
+func NovoServidor(store db.Store) *Servidor {
 	servidor := &Servidor{store: store}
 	roteador := gin.Default()
 	if v, ok := binding.Validator.Engine().(*validator.Validate); ok { // validando se a moeda é suportada
