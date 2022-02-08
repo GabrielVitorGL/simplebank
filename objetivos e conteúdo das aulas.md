@@ -124,12 +124,22 @@ Simplebank project using Golang
 
 ### 30/01
 
- #### 13º aula - Implementando a API de transferência de dinheiro com um validador de parâmetros customizado
+ #### 13º aula - Simulando o Banco de dados para testar a API HTTP e obter 100% de cobertura no teste
+   * Simular o banco de dados nos trará diversas vantagens, podemos citar:
+       * Rodar testes independentes um dos outros, ou seja, um não irá interferir no outro e não ficará gravado no banco de dados
+       * Rodas os testes mais rápido, por não presicar se conectar com o banco de dados e tudo mais
+       * 100% de cobertura no teste, e também podemos testar diversos tipos de erros inesperados como perda de conexão etc
+   * Utilizar a biblioteca Gomock para simular o nosso banco de dados 
+   * Fazer o código que irá testar 100% das nossas funções
+
+### 05/02
+
+ #### 14º aula - Implementando a API de transferência de dinheiro com um validador de parâmetros customizado
    * Criar o arquivo transferencia.go na pasta api que será responsável por fazer a transferencia de dinheiro entre contas
    * Testar no Postman se a API está funcionando
   
-   | Função              | Método | URL do request                       | Customizações                                                               |
-   | ------------------- | ------ | ------------------------------------ | --------------------------------------------------------------------------- |
-   | Criar Transferencia | POST   | http://localhost:8080/transferencias | Body > raw > JSON > definir: de_id_conta, para_id_conta, quantia, moeda     |
+   | Função              | Método | URL do request                       | Customizações                                                           |
+   | ------------------- | ------ | ------------------------------------ | ----------------------------------------------------------------------- |
+   | Criar Transferencia | POST   | http://localhost:8080/transferencias | Body > raw > JSON > definir: de_id_conta, para_id_conta, quantia, moeda |
    
    * Retirar a opção "oneof" de nossas API e fazer essa verificação de uma forma mais otimizada, e com menos chances de cometer erros caso fossemos trabalhar com centenas de tipos de moedas
