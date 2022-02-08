@@ -130,7 +130,7 @@ Simplebank project using Golang
        * Rodas os testes mais rápido, por não presicar se conectar com o banco de dados e tudo mais
        * 100% de cobertura no teste, e também podemos testar diversos tipos de erros inesperados como perda de conexão etc
    * Utilizar a biblioteca Gomock para simular o nosso banco de dados 
-   * 
+   * Fazer o código que irá testar 100% das nossas funções
 
 ### 05/02
 
