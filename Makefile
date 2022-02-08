@@ -28,4 +28,7 @@ test:
 server:
 	go run main.go
 
-.PHONY: postgres stopps removeps createdb dropdb migrateup migratedown sqlc test server
+mock:
+	mockgen -package mockdb -destination db/mock/store.go github.com/techschool/simplebank/db/sqlc Store
+
+.PHONY: postgres stopps removeps createdb dropdb migrateup migratedown sqlc test server mock
