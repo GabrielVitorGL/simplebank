@@ -110,6 +110,21 @@ func (mr *MockStoreMockRecorder) CriarTransferencia(arg0, arg1 interface{}) *gom
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CriarTransferencia", reflect.TypeOf((*MockStore)(nil).CriarTransferencia), arg0, arg1)
 }
 
+// CriarUsuario mocks base method.
+func (m *MockStore) CriarUsuario(arg0 context.Context, arg1 db.CriarUsuarioParams) (db.Usuario, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "CriarUsuario", arg0, arg1)
+	ret0, _ := ret[0].(db.Usuario)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// CriarUsuario indicates an expected call of CriarUsuario.
+func (mr *MockStoreMockRecorder) CriarUsuario(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CriarUsuario", reflect.TypeOf((*MockStore)(nil).CriarUsuario), arg0, arg1)
+}
+
 // DeletarConta mocks base method.
 func (m *MockStore) DeletarConta(arg0 context.Context, arg1 int64) error {
 	m.ctrl.T.Helper()
@@ -227,6 +242,21 @@ func (m *MockStore) ObterTransferencia(arg0 context.Context, arg1 int64) (db.Tra
 func (mr *MockStoreMockRecorder) ObterTransferencia(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ObterTransferencia", reflect.TypeOf((*MockStore)(nil).ObterTransferencia), arg0, arg1)
+}
+
+// ObterUsuario mocks base method.
+func (m *MockStore) ObterUsuario(arg0 context.Context, arg1 string) (db.Usuario, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ObterUsuario", arg0, arg1)
+	ret0, _ := ret[0].(db.Usuario)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ObterUsuario indicates an expected call of ObterUsuario.
+func (mr *MockStoreMockRecorder) ObterUsuario(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ObterUsuario", reflect.TypeOf((*MockStore)(nil).ObterUsuario), arg0, arg1)
 }
 
 // TransferTx mocks base method.

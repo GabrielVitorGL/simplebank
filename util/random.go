@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"math/rand"
 	"strings"
 	"time"
@@ -32,21 +33,9 @@ func RandomString(n int) string {
 
 // Gera um nome aleatório de um suposto dono para uma conta
 func RandomOwner() string {
-	n := RandomInt(0, 5)
-	switch n {
-	case 0:
-		return RandomString(3)
-	case 1:
-		return RandomString(4)
-	case 2:
-		return RandomString(5)
-	case 3:
-		return RandomString(6)
-	case 4:
-		return RandomString(7)
-	default:
-		return RandomString(8)
-	}
+	n := RandomInt(3, 8)
+
+	return RandomString(int(n))
 }
 
 // Gera uma quantia aleatória de dinheiro para essa pessoa
@@ -59,4 +48,10 @@ func RandomCurrency() string {
 	currencies := []string{USD, GBP, EUR, LTC, BRL, RUB, CAD, CST, CHE, CHW, BTN, CAT, NZDT, HKT, CNY, HKD, COP, COU, CRC}
 	n := len(currencies)
 	return currencies[rand.Intn(n)]
+}
+
+//Gera um email aleatório
+func EmailAleatorio() string {
+	n := RandomInt(3, 10)
+	return fmt.Sprintf("%s@gmail.com", RandomString(int(n)))
 }

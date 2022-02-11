@@ -30,3 +30,12 @@ type Transferencia struct {
 	Quantia  int64     `json:"quantia"`
 	CriadaEm time.Time `json:"criada_em"`
 }
+
+type Usuario struct {
+	NomeUsuario  string    `json:"nome_usuario"`
+	SenhaHash    string    `json:"senha_hash"`
+	NomeCompleto string    `json:"nome_completo"`
+	Email        string    `json:"email"`
+	MudancaSenha time.Time `json:"mudanca_senha"`
+	CriadaEm     time.Time `json:"criada_em"`
+}

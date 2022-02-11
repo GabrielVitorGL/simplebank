@@ -12,6 +12,7 @@ type Querier interface {
 	CriarConta(ctx context.Context, arg CriarContaParams) (Conta, error)
 	CriarMudanca(ctx context.Context, arg CriarMudancaParams) (Mudanca, error)
 	CriarTransferencia(ctx context.Context, arg CriarTransferenciaParams) (Transferencia, error)
+	CriarUsuario(ctx context.Context, arg CriarUsuarioParams) (Usuario, error)
 	DeletarConta(ctx context.Context, id int64) error
 	ListarContas(ctx context.Context, arg ListarContasParams) ([]Conta, error)
 	ListarMudancas(ctx context.Context, arg ListarMudancasParams) ([]Mudanca, error)
@@ -20,6 +21,7 @@ type Querier interface {
 	ObterContaParaAtualizar(ctx context.Context, id int64) (Conta, error)
 	ObterMudanca(ctx context.Context, id int64) (Mudanca, error)
 	ObterTransferencia(ctx context.Context, id int64) (Transferencia, error)
+	ObterUsuario(ctx context.Context, nomeUsuario string) (Usuario, error)
 }
 
 var _ Querier = (*Queries)(nil)

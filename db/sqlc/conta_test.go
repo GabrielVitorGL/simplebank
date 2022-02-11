@@ -15,8 +15,10 @@ import (
 )
 
 func criarContaAleatoria(t *testing.T) Conta {
+	usuario := criarUsuarioAleatorio(t)
+
 	arg := CriarContaParams{
-		Dono:  util.RandomOwner(),
+		Dono:  usuario.NomeUsuario,
 		Saldo: util.RandomMoney(),
 		Moeda: util.RandomCurrency(),
 	}
