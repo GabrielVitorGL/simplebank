@@ -3,7 +3,7 @@ CREATE TABLE [usuario] (
   [senha_hash] nvarchar(255) NOT NULL,
   [nome_completo] nvarchar(255) NOT NULL,
   [email] nvarchar(255) UNIQUE NOT NULL,
-  [mudanca_senha] timestamptz NOT NULL DEFAULT '0001-01-01 00:00:00:00Z',
+  [mudanca_senha] timestamptz NOT NULL DEFAULT '0001-01-01 00:00:00Z',
   [criada_em] timestamptz NOT NULL DEFAULT (now())
 )
 GO

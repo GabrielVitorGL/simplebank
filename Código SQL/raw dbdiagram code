@@ -3,7 +3,7 @@ Table usuario {
   senha_hash varchar [not null]
   nome_completo varchar [not null]
   email varchar [unique, not null]
-  mudanca_senha timestamptz [not null, default: '0001-01-01 00:00:00:00Z']
+  mudanca_senha timestamptz [not null, default: '0001-01-01 00:00:00Z']
   criada_em timestamptz [not null, default: `now()`]
 }
 
