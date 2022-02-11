@@ -143,3 +143,18 @@ Simplebank project using Golang
    | Criar Transferencia | POST   | http://localhost:8080/transferencias | Body > raw > JSON > definir: de_id_conta, para_id_conta, quantia, moeda |
    
    * Retirar a opção "oneof" de nossas API e fazer essa verificação de uma forma mais otimizada, e com menos chances de cometer erros caso fossemos trabalhar com centenas de tipos de moedas
+
+### 10/02
+
+ #### 15º aula - Criando a tabela de usuários com uma chave única e estrangeira no PostgreSQL
+   * Implementaremos o recurso de autenticação e autorização de usuário
+   * Criar a tabela usuários no dbdiagram.io
+   * Atualizar o nosso banco de dados com a nova tabela
+       * Obs: Poderíamos substituir todo o código do arquivo migrateup com o novo, deletar o banco de dados e iniciar outro com as mudanças, porém essa não é a maneira correta visto que em um projeto real temos diversas atualizações que podem ser realizadas e utilizar esse processo iria apagar todos os dados salvos em nosso banco de dados. Desta forma, iremos criar outro arquivo migrate para fazer essa atualização
+   * Testar os códigos que criamos para ver se está tudo funcionando
+ 
+ #### 16º aula - Atualizando o código em Go para funcionar com a tabela criada na última aula
+   * Criar e fazer o código do arquivo usuario.sql que irá funcionar com a tabela "usuario" que criamos na aula 15
+   * Fazer os testes com essa nova implementação
+   * Tratar os erros gerados com essa nova tabela
+   * Testar e arrumar os requests no Postman
