@@ -1,3 +1,13 @@
+CREATE TABLE [usuario] (
+  [nome_usuario] nvarchar(255) PRIMARY KEY,
+  [senha_hash] nvarchar(255) NOT NULL,
+  [nome_completo] nvarchar(255) NOT NULL,
+  [email] nvarchar(255) UNIQUE NOT NULL,
+  [mudanca_senha] timestamptz NOT NULL DEFAULT '0001-01-01 00:00:00:00Z',
+  [criada_em] timestamptz NOT NULL DEFAULT (now())
+)
+GO
+
 CREATE TABLE [contas] (
   [id] bigserial PRIMARY KEY,
   [dono] nvarchar(255) NOT NULL,
@@ -24,6 +34,9 @@ CREATE TABLE [transferencias] (
 )
 GO
 
+ALTER TABLE [contas] ADD FOREIGN KEY ([dono]) REFERENCES [usuario] ([nome_usuario])
+GO
+
 ALTER TABLE [mudancas] ADD FOREIGN KEY ([id_conta]) REFERENCES [contas] ([id])
 GO
 
@@ -36,16 +49,19 @@ GO
 CREATE INDEX [contas_index_0] ON [contas] ("dono")
 GO
 
-CREATE INDEX [mudancas_index_1] ON [mudancas] ("id_conta")
+CREATE UNIQUE INDEX [contas_index_1] ON [contas] ("dono", "moeda")
 GO
 
-CREATE INDEX [transferencias_index_2] ON [transferencias] ("de_id_conta")
+CREATE INDEX [mudancas_index_2] ON [mudancas] ("id_conta")
 GO
 
-CREATE INDEX [transferencias_index_3] ON [transferencias] ("para_id_conta")
+CREATE INDEX [transferencias_index_3] ON [transferencias] ("de_id_conta")
 GO
 
-CREATE INDEX [transferencias_index_4] ON [transferencias] ("de_id_conta", "para_id_conta")
+CREATE INDEX [transferencias_index_4] ON [transferencias] ("para_id_conta")
+GO
+
+CREATE INDEX [transferencias_index_5] ON [transferencias] ("de_id_conta", "para_id_conta")
 GO
 
 EXEC sp_addextendedproperty
