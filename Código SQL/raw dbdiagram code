@@ -1,12 +1,22 @@
+Table usuario {
+  nome_usuario varchar [pk]
+  senha_hash varchar [not null]
+  nome_completo varchar [not null]
+  email varchar [unique, not null]
+  mudanca_senha timestamptz [not null, default: '0001-01-01 00:00:00:00Z']
+  criada_em timestamptz [not null, default: `now()`]
+}
+
 Table contas {
-  id bigserial [pk] // chave primária
-  dono varchar [not null]// Também pode ser do tipo text
+  id bigserial [pk] // Chave primária
+  dono varchar [ref: > usuario.nome_usuario, not null]// Também pode ser do tipo text
   saldo bigint [not null] // Colocamos "not null" em todas que não precisam ser únicas
   moeda varchar [not null]
   criada_em timestamptz [not null, default: `now()`]// Inclui o fuso horário
 
   indexes {
     dono
+    (dono, moeda) [unique] // um dono não pode ter várias contas com a mesma moeda
   }
 }
 
