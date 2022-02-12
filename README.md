@@ -165,3 +165,20 @@ Simplebank project using Golang
    * Nunca devemos armazenar senhas em nosso banco de dados, primeiro devemos encriptar esse dado para, após isso, podermos armazená-lo com segurança
 
 <img src='https://github.com/GabrielVitorGL/images/blob/main/Hash%20Password/Hash.jpg?raw=true' style="width: 50%;">
+
+   * Fazer as funções que encriptam e decriptam a senha
+   * Fazer os testes para garantir que as funções estão funcionando corretamente
+   * Implementar essas funções no teste de criação de usuário
+   * Codificar a API de criação de usuários
+   * Testar a API
+   
+   | Função        | Método | URL do request                 | Customizações                                                          |
+   | --------------| ------ | ------------------------------ | ---------------------------------------------------------------------- |
+   | Criar Usuario | POST   | http://localhost:8080/usuarios | Body > raw > JSON > definir: nome_usuario, senha, nome_completo, email |
+   
+   * Retirar a senha encriptada do response da API, já que o usuário não precisa dessa informação e mostrá-la pode ser um problema
+
+ #### 18º aula - Escrevendo testes de unidade mais fortes com um matcher gomock personalizado
+   * Criar o arquivo usuario_test para testar a API
+   * Verificamos que como a senha sempre será diferente cada vez que encriptamos-a, não podemos usar uma simples função de checar valores correspondentes. Então, iremos criar uma função específica para isso
+   * Realizar os testes e certificar que tudo está funcionando
