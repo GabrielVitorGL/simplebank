@@ -182,3 +182,12 @@ Simplebank project using Golang
    * Criar o arquivo usuario_test para testar a API
    * Verificamos que como a senha sempre será diferente cada vez que encriptamos-a, não podemos usar uma simples função de checar valores correspondentes. Então, iremos criar uma função específica para isso
    * Realizar os testes e certificar que tudo está funcionando
+
+ #### 19º aula - Autenticação baseada em token: os problemas de segurança do JWT e utilizando o PASETO para resolver esses problemas
+   * Algumas desvantagens de usar o JWT:
+      * Algoritmos fracos: Temos a opção de escolher diversos algorítimos para trabalhar, entre eles vários não tão seguros. Dar essa liberdade de escolha ao usuário pode ser um problema
+      * Falsificação trivial: Algumas escolhas de bibliotecas e outros descuidos podem abrir brechas de segurança em nosso sistema, como um exemplo já ocorrido de uma falha em que era possível alterar o "alg" do header para "none" ou "HS256"
+   * Como uma melhor e mais segura alternativa de autenticação, temos o PASETO
+      * Algoritmos fortes: Os desenvolvedores não tem que escolher qual algorítimo o sistema irá utilizar, tornando assim muito mais simples e garantido que estaremos sempre utilizando o nível de segurança máxima. A única coisa que temos que escolher é a versão do PASETO que iremos utilizar
+      * Anti Falsificação trivial: Nesse caso como não temos mais o "alg" no header, isso previne os ataques do tipo "none"
+      * O payload não é codificado como no JWT, e sim encriptado. Isso torna muito mais seguro pois dessa forma não é possivel ler ou mudar os dados armazenados nele
