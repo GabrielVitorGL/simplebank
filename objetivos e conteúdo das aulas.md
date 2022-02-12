@@ -90,8 +90,8 @@ Simplebank project using Golang
    * Entender como eles funcionam no postgres
      #### Como cada nível de isolamento funciona no MySQL e no Postgres:
      <p float = left>
-      <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='370'>
-      <img src='https://github.com/GabrielVitorGL/private/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='370'>
+      <img src='https://github.com/GabrielVitorGL/images/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='370'>
+      <img src='https://github.com/GabrielVitorGL/images/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='370'>
      </p>
      
 
@@ -158,3 +158,36 @@ Simplebank project using Golang
    * Fazer os testes com essa nova implementação
    * Tratar os erros gerados com essa nova tabela
    * Testar e arrumar os requests no Postman
+
+### 11/02
+
+ #### 17º aula - Armazenando senhas de forma segura usando o Bcrypt
+   * Nunca devemos armazenar senhas em nosso banco de dados, primeiro devemos encriptar esse dado para, após isso, podermos armazená-lo com segurança
+
+<img src='https://github.com/GabrielVitorGL/images/blob/main/Hash%20Password/Hash.jpg?raw=true' style="width: 50%;">
+
+   * Fazer as funções que encriptam e decriptam a senha
+   * Fazer os testes para garantir que as funções estão funcionando corretamente
+   * Implementar essas funções no teste de criação de usuário
+   * Codificar a API de criação de usuários
+   * Testar a API
+   
+   | Função        | Método | URL do request                 | Customizações                                                          |
+   | --------------| ------ | ------------------------------ | ---------------------------------------------------------------------- |
+   | Criar Usuario | POST   | http://localhost:8080/usuarios | Body > raw > JSON > definir: nome_usuario, senha, nome_completo, email |
+   
+   * Retirar a senha encriptada do response da API, já que o usuário não precisa dessa informação e mostrá-la pode ser um problema
+
+ #### 18º aula - Escrevendo testes de unidade mais fortes com um matcher gomock personalizado
+   * Criar o arquivo usuario_test para testar a API
+   * Verificamos que como a senha sempre será diferente cada vez que encriptamos-a, não podemos usar uma simples função de checar valores correspondentes. Então, iremos criar uma função específica para isso
+   * Realizar os testes e certificar que tudo está funcionando
+
+ #### 19º aula - Autenticação baseada em token: os problemas de segurança do JWT e utilizando o PASETO para resolver esses problemas
+   * Algumas desvantagens de usar o JWT:
+      * Algoritmos fracos: Temos a opção de escolher diversos algorítimos para trabalhar, entre eles vários não tão seguros. Dar essa liberdade de escolha ao usuário pode ser um problema
+      * Falsificação trivial: Algumas escolhas de bibliotecas e outros descuidos podem abrir brechas de segurança em nosso sistema, como um exemplo já ocorrido de uma falha em que era possível alterar o "alg" do header para "none" ou "HS256"
+   * Como uma melhor e mais segura alternativa de autenticação, temos o PASETO
+      * Algoritmos fortes: Os desenvolvedores não tem que escolher qual algorítimo o sistema irá utilizar, tornando assim muito mais simples e garantido que estaremos sempre utilizando o nível de segurança máxima. A única coisa que temos que escolher é a versão do PASETO que iremos utilizar
+      * Anti Falsificação trivial: Nesse caso como não temos mais o "alg" no header, isso previne os ataques do tipo "none"
+      * O payload não é codificado como no JWT, e sim encriptado. Isso torna muito mais seguro pois dessa forma não é possivel ler ou mudar os dados armazenados nele
