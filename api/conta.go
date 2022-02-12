@@ -35,6 +35,7 @@ func (servidor *Servidor) criarConta(ctx *gin.Context) {
 			switch pqErr.Code.Name() {
 			case "foregin_key_violation", "unique_violation":
 				ctx.JSON(http.StatusForbidden, errorResponse(err))
+				return
 			}
 		}
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))

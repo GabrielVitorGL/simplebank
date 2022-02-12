@@ -29,7 +29,7 @@ sqlc:
 	powershell -command "docker run --rm -v $${pwd}:/src -w /src kjconroy/sqlc generate"
 
 test:
-	go test -v -cover ./...
+	go clean -testcache && go test -v -cover ./...
 
 server:
 	go run main.go

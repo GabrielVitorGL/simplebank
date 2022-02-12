@@ -21,6 +21,8 @@ func NovoServidor(store db.Store) *Servidor {
 		v.RegisterValidation("moeda", validarMoeda)
 	}
 
+	roteador.POST("/usuarios", servidor.criarUsuario)
+	
 	roteador.POST("/contas", servidor.criarConta)
 	roteador.GET("/contas/:id", servidor.obterConta)
 	roteador.GET("/contas", servidor.listarContas)

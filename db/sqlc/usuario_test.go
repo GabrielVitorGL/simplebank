@@ -10,9 +10,12 @@ import (
 )
 
 func criarUsuarioAleatorio(t *testing.T) Usuario {
+	senhaHash, err := util.SenhaHash(util.RandomString(int(util.RandomInt(6, 12))))
+	require.NoError(t, err)
+
 	arg := CriarUsuarioParams{
 		NomeUsuario:  util.RandomOwner(),
-		SenhaHash: "senha",
+		SenhaHash: senhaHash,
 		NomeCompleto:  util.RandomOwner() + " " + util.RandomOwner(),
 		Email: util.EmailAleatorio(),
 	}
