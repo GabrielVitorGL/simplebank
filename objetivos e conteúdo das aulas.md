@@ -191,3 +191,11 @@ Simplebank project using Golang
       * Algoritmos fortes: Os desenvolvedores não tem que escolher qual algorítimo o sistema irá utilizar, tornando assim muito mais simples e garantido que estaremos sempre utilizando o nível de segurança máxima. A única coisa que temos que escolher é a versão do PASETO que iremos utilizar
       * Anti Falsificação trivial: Nesse caso como não temos mais o "alg" no header, isso previne os ataques do tipo "none"
       * O payload não é codificado como no JWT, e sim encriptado. Isso torna muito mais seguro pois dessa forma não é possivel ler ou mudar os dados armazenados nele
+
+### 12/02
+
+ #### 20º aula - Criar e verificar os tokens JWT e PASETO usando Golang
+   * Criar o arquivo maker.go e payload.go que definirão as estruturas do token
+   * Implementar o JWT e testar para ver como se comporta
+   * Implementar o PASETO e testar
+   * Observar a diferença entre os dois métodos de verificação de token
