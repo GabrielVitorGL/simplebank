@@ -90,8 +90,8 @@ Simplebank project using Golang
    * Entender como eles funcionam no postgres
      #### Como cada nível de isolamento funciona no MySQL e no Postgres:
      <p float = left>
-      <img src='https://github.com/GabrielVitorGL/images/blob/main/Isolation%20Level/MySQL.jpg?raw=true' width='370'>
-      <img src='https://github.com/GabrielVitorGL/images/blob/main/Isolation%20Level/Postgres.jpg?raw=true' width='370'>
+      <img src='https://github.com/GabrielVitorGL/simplebank/blob/main/images/Isolation%20Level/MySQL.jpg?raw=true' width='370'>
+      <img src='https://github.com/GabrielVitorGL/simplebank/blob/main/images/Isolation%20Level/Postgres.jpg?raw=true' width='370'>
      </p>
      
 
@@ -164,7 +164,7 @@ Simplebank project using Golang
  #### 17º aula - Armazenando senhas de forma segura usando o Bcrypt
    * Nunca devemos armazenar senhas em nosso banco de dados, primeiro devemos encriptar esse dado para, após isso, podermos armazená-lo com segurança
 
-<img src='https://github.com/GabrielVitorGL/images/blob/main/Hash%20Password/Hash.jpg?raw=true' style="width: 50%;">
+<img src='https://github.com/GabrielVitorGL/simplebank/blob/main/images/Hash%20Password/Hash.jpg?raw=true' style="width: 50%;">
 
    * Fazer as funções que encriptam e decriptam a senha
    * Fazer os testes para garantir que as funções estão funcionando corretamente
