@@ -1,6 +1,7 @@
 package api
 
 import (
+	"database/sql"
 	"net/http"
 	"time"
 
@@ -17,12 +18,22 @@ type criarUsuarioRequerimentos struct {
 	Email        string `json:"email" binding:"required,email"`
 }
 
-type criarUsuarioResponse struct {
+type usuarioResponse struct {
 	NomeUsuario  string    `json:"nome_usuario"`
 	NomeCompleto string    `json:"nome_completo"`
 	Email        string    `json:"email"`
 	MudancaSenha time.Time `json:"mudanca_senha"`
 	CriadaEm     time.Time `json:"criada_em"`
+}
+
+func newUsuarioResponse(usuario db.Usuario) usuarioResponse {
+	return usuarioResponse{
+		NomeUsuario:  usuario.NomeUsuario,
+		NomeCompleto: usuario.NomeCompleto,
+		Email:        usuario.Email,
+		MudancaSenha: usuario.MudancaSenha,
+		CriadaEm:     usuario.CriadaEm,
+	}
 }
 
 func (servidor *Servidor) criarUsuario(ctx *gin.Context) {
@@ -58,13 +69,56 @@ func (servidor *Servidor) criarUsuario(ctx *gin.Context) {
 		return
 	}
 
-	resp := criarUsuarioResponse{
-		NomeUsuario: usuario.NomeUsuario,
-		NomeCompleto: usuario.NomeCompleto,
-		Email: usuario.Email,
-		MudancaSenha: usuario.MudancaSenha,
-		CriadaEm: usuario.CriadaEm,
-	}
+	resp := newUsuarioResponse(usuario)
 	// Se não houver erros
 	ctx.JSON(http.StatusOK, resp)
+}
+
+type logarUsuarioRequest struct {
+	NomeUsuario string `json:"nome_usuario" binding:"required,alphanum"`
+	Senha       string `json:"senha" binding:"required,min=6"`
+}
+
+type logarUsuarioResponse struct {
+	AccessToken string          `json:"access_token"`
+	Usuario     usuarioResponse `json:"usuario"`
+}
+
+func (servidor *Servidor) logarUsuario(ctx *gin.Context) {
+	var req logarUsuarioRequest
+	if err := ctx.ShouldBindJSON(&req); err != nil {
+		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+		return
+	}
+
+	usuario, err := servidor.store.ObterUsuario(ctx, req.NomeUsuario)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			ctx.JSON(http.StatusNotFound, errorResponse(err))
+			return
+		}
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	err = util.ChecarSenha(req.Senha, usuario.SenhaHash)
+	if err != nil {
+		ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+		return
+	}
+
+	accessToken, err := servidor.tokenMaker.CriarToken(
+		usuario.NomeUsuario,
+		servidor.config.AccessTokenDuration,
+	)
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
+		return
+	}
+
+	rsp := logarUsuarioResponse{
+		AccessToken: accessToken,
+		Usuario:     newUsuarioResponse(usuario),
+	}
+	ctx.JSON(http.StatusOK, rsp)
 }

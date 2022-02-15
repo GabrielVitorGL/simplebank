@@ -1,13 +1,19 @@
 package util
 
-import "github.com/spf13/viper"
+import (
+	"time"
+
+	"github.com/spf13/viper"
+)
 
 // Config irá guardar todas as configurações da aplicação
 // Os valores serão lidos pelo viper de um arquivo config ou uma variável de ambiente
 type Config struct {
-	DBDriver         string `mapstructure:"DB_DRIVER"`
-	DBSource         string `mapstructure:"DB_SOURCE"`
-	EnderecoServidor string `mapstructure:"ENDERECO_SERVIDOR"`
+	DBDriver           string        `mapstructure:"DB_DRIVER"`
+	DBSource           string        `mapstructure:"DB_SOURCE"`
+	EnderecoServidor   string        `mapstructure:"ENDERECO_SERVIDOR"`
+	TokenSymmetricKey  string        `mapstructure:"TOKEN_SYMMETRIC_KEY"`
+	AccessTokenDuration time.Duration `mapstructure:"ACESS_TOKEN_DURATION"`
 }
 
 func CarregarConfig(caminho string) (config Config, err error) {

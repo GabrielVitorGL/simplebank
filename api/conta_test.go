@@ -95,7 +95,7 @@ func TestContaObtidaAPI(t *testing.T) {
 			tc.buildStubs(store)
 
 			// Iniciar o teste do servidor e mandar um request
-			servidor := NovoServidor(store)
+			servidor := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
 
 			url := fmt.Sprintf("/contas/%d", tc.IDconta)

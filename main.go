@@ -21,7 +21,10 @@ func main() {
 	}
 
 	store := db.NewStore(conec)
-	servidor := api.NovoServidor(store)
+	servidor, err := api.NovoServidor(config, store)
+	if err != nil {
+		log.Fatal("nao foi possivel criar o servidor")
+	}
 
 	err = servidor.Start(config.EnderecoServidor)
 	if err != nil {

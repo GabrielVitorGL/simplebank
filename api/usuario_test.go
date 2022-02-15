@@ -176,9 +176,9 @@ func TestCriarUsuarioAPI(t *testing.T) {
 			defer ctrl.Finish()
 			store := mockdb.NewMockStore(ctrl)
 			tc.buildStubs(store)
-			servidor := NovoServidor(store)
+			servidor := newTestServer(t, store)
 			recorder := httptest.NewRecorder()
-			
+
 			data, err := json.Marshal(tc.conteudo)
 			require.NoError(t, err)
 			url := "/usuarios"
@@ -195,10 +195,10 @@ func usuarioAleatorio(t *testing.T) (usuario db.Usuario, senha string) {
 	senhaHash, err := util.SenhaHash(senha)
 	require.NoError(t, err)
 	usuario = db.Usuario{
-		NomeUsuario:       util.RandomOwner(),
-		SenhaHash: senhaHash,
-		NomeCompleto:       util.RandomOwner() + " " + util.RandomOwner(),
-		Email:          util.EmailAleatorio(),
+		NomeUsuario:  util.RandomOwner(),
+		SenhaHash:    senhaHash,
+		NomeCompleto: util.RandomOwner() + " " + util.RandomOwner(),
+		Email:        util.EmailAleatorio(),
 	}
 	return
 }
