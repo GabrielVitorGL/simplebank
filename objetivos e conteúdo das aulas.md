@@ -199,3 +199,14 @@ Simplebank project using Golang
    * Implementar o JWT e testar para ver como se comporta
    * Implementar o PASETO e testar
    * Observar a diferença entre os dois métodos de verificação de token
+
+### 14/02
+
+ #### 21º aula - Implementando a API de Login de usuário que retorna um token PASETO ou JWT
+   * Definir as funções que criarão o token na API
+   * Implementar a API de login e corrigir os erros
+   * Testar a API
+   
+   | Função        | Método | URL do request                       | Customizações                                    |
+   | --------------| ------ | ------------------------------------ | ------------------------------------------------ |
+   | Logar Usuario | POST   | http://localhost:8080/usuarios/login | Body > raw > JSON > definir: nome_usuario, senha |
