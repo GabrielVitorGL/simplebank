@@ -87,21 +87,24 @@ func TestDeletarConta(t *testing.T) {
 }
 
 func TestListarContas(t *testing.T) {
+	var ultimaConta Conta
 	for i := 0; i < 10; i++ {
-		criarContaAleatoria(t) // Criará 10 contas aleatórias
+		ultimaConta = criarContaAleatoria(t) // Criará 10 contas aleatórias
 	}
 
 	arg := ListarContasParams{
+		Dono: ultimaConta.Dono,
 		Limit:  5, //Listará 5
-		Offset: 5, //Comecará do 5
+		Offset: 0, //Comecará do 5
 		// irá listar o 5, 6, 7, 8, 9
 	}
 
 	contas, err := testQueries.ListarContas(context.Background(), arg)
 	require.NoError(t, err)
-	require.Len(t, contas, 5) // garantindo que o slice retornado teve 5 contas
+	require.NotEmpty(t, contas) // garantindo que o slice retornado teve 5 contas
 
 	for _, conta := range contas { // ignorando o índice e salvando o valor em "conta"
 		require.NotEmpty(t, conta) // garantindo que as contas não estão vazias
+		require.Equal(t, ultimaConta.Dono, conta.Dono)
 	}
 }

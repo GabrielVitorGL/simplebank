@@ -98,18 +98,20 @@ func (q *Queries) DeletarConta(ctx context.Context, id int64) error {
 
 const listarContas = `-- name: ListarContas :many
 SELECT id, dono, saldo, moeda, criada_em FROM contas
+WHERE dono = $1
 ORDER BY id
-LIMIT $1
-OFFSET $2
+LIMIT $2
+OFFSET $3
 `
 
 type ListarContasParams struct {
-	Limit  int32 `json:"limit"`
-	Offset int32 `json:"offset"`
+	Dono   string `json:"dono"`
+	Limit  int32  `json:"limit"`
+	Offset int32  `json:"offset"`
 }
 
 func (q *Queries) ListarContas(ctx context.Context, arg ListarContasParams) ([]Conta, error) {
-	rows, err := q.db.QueryContext(ctx, listarContas, arg.Limit, arg.Offset)
+	rows, err := q.db.QueryContext(ctx, listarContas, arg.Dono, arg.Limit, arg.Offset)
 	if err != nil {
 		return nil, err
 	}

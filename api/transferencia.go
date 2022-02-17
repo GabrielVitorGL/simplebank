@@ -2,11 +2,13 @@ package api
 
 import (
 	"database/sql"
+	"errors"
 	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	db "github.com/techschool/simplebank/db/sqlc"
+	"github.com/techschool/simplebank/token"
 )
 
 type transferenciaRequerimentos struct {
@@ -24,11 +26,19 @@ func (servidor *Servidor) criarTransferencia(ctx *gin.Context) {
 		return
 	}
 
-	if !servidor.validarConta(ctx, req.DeIDConta, req.Moeda) { // if simplificado, apenas o if e a função esperaria que ela fosse True, nesse caso como colocamos o ! irá esperar que ela seja False para executar o return
+	deConta, valido := servidor.validarConta(ctx, req.DeIDConta, req.Moeda)
+	if !valido { // if simplificado, apenas o if e a função esperaria que ela fosse True, nesse caso como colocamos o ! irá esperar que ela seja False para executar o return
 		return
 	}
 
-	if !servidor.validarConta(ctx, req.ParaIDConta, req.Moeda) {
+	authPayload := ctx.MustGet(authorizationPayloadKey).(*token.Payload)
+	if deConta.Dono != authPayload.NomeUsuario {
+		err := errors.New("de_conta nao pertence ao usuario autenticado")
+		ctx.JSON(http.StatusUnauthorized, errorResponse(err))
+		return
+	}
+	_, valido = servidor.validarConta(ctx, req.ParaIDConta, req.Moeda)
+	if !valido {
 		return
 	}
 
@@ -49,25 +59,25 @@ func (servidor *Servidor) criarTransferencia(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, resultado)
 }
 
-func (servidor *Servidor) validarConta(ctx *gin.Context, IDConta int64, moeda string) bool { // Irá checar se uma conta realmente existe e se a moeda é a mesma da especificada no input
+func (servidor *Servidor) validarConta(ctx *gin.Context, IDConta int64, moeda string) (db.Conta, bool) { // Irá checar se uma conta realmente existe e se a moeda é a mesma da especificada no input
 	conta, err := servidor.store.ObterConta(ctx, IDConta)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
-			return false
+			return conta, false
 		}
 
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))
-		return false
+		return conta, false
 	}
 
 	// checando se a moeda da conta bate com a inserida
 	if conta.Moeda != moeda {
 		err := fmt.Errorf("a moeda da conta [%d](%s) nao corresponde a digitada (%s)", conta.ID, conta.Moeda, moeda)
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
-		return false
+		return conta, false
 	}
-	
+
 	// se tudo der certo
-	return true
+	return conta, true
 }

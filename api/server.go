@@ -44,11 +44,13 @@ func (servidor *Servidor) configurarRoteador() {
 	roteador.POST("/usuarios", servidor.criarUsuario)
 	roteador.POST("/usuarios/login", servidor.logarUsuario)
 
-	roteador.POST("/contas", servidor.criarConta)
-	roteador.GET("/contas/:id", servidor.obterConta)
-	roteador.GET("/contas", servidor.listarContas)
+	authRoutes := roteador.Group("/").Use(authMiddleware(servidor.tokenMaker))
 
-	roteador.POST("/transferencias", servidor.criarTransferencia)
+	authRoutes.POST("/contas", servidor.criarConta)
+	authRoutes.GET("/contas/:id", servidor.obterConta)
+	authRoutes.GET("/contas", servidor.listarContas)
+
+	authRoutes.POST("/transferencias", servidor.criarTransferencia)
 
 	servidor.roteador = roteador
 
