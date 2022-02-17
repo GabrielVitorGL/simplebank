@@ -210,3 +210,15 @@ Simplebank project using Golang
    | Função        | Método | URL do request                       | Customizações                                    |
    | --------------| ------ | ------------------------------------ | ------------------------------------------------ |
    | Logar Usuario | POST   | http://localhost:8080/usuarios/login | Body > raw > JSON > definir: nome_usuario, senha |
+   
+### 16/02
+
+ #### 22º aula - Implementando regras de autenticação middleware
+   * Criar o arquivo middleware.go
+   * Fazer os unit tests para verificar se tudo está funcionando como queremos
+   * Implementar o middleware no servidor
+   * Implementar as regras de autenticação, que definirão as permissões dos usuários relacionadas a cada função
+
+<img src='https://github.com/GabrielVitorGL/simplebank/blob/main/images/Authorization%20Rules/Rules.jpg?raw=true' style="width: 50%;">
+
+   * Testar as regras no postman
