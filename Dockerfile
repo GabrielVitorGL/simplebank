@@ -1,4 +1,4 @@
-#Build stage
+# Build Stage
 FROM golang:1.17-alpine3.15 AS builder
 WORKDIR /app
 COPY . .
