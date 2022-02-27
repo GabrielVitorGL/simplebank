@@ -230,3 +230,16 @@ Simplebank project using Golang
    * Criar a imagem de nosso projeto com o Dockerfile
    * Reduzir o tamanho da imagem, compilando apenas o necessário. 
       * A redução será de mais de 500mb para apenas 22mb
+
+
+ #### 24º aula - Conectando dois containers na mesma rede do docker
+   * Rodar o server usando a imagem que criamos e arrumar os erros
+   * Criar uma network para colocar os containers do postgres e do simplebank, para que possam se achar na mesma rede apenas pelo nome
+
+ #### 25º aula - Fazendo o arquivo docker-compose e controlando os pedidos de inicialização usando wait-for.sh
+   * Fazer o arquivo docker-compose.yaml que irá conter todas as configurações dos containers
+   * Fazer o app esperar o servidor do postgres estar pronto antes de rodar o migrate script
+   * Testar para conferir se o servidor está funcionando corretamente
+
+ #### 26º aula - Criando uma conta gratuita no Amazon Web Services
+   * Criar uma conta gratuita no serviço de processamento em nuvem da amazon para usarmos com o nosso projeto
