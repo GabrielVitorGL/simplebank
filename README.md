@@ -222,3 +222,11 @@ Simplebank project using Golang
 <img src='https://github.com/GabrielVitorGL/simplebank/blob/main/images/Authorization%20Rules/Rules.jpg?raw=true' style="width: 50%;">
 
    * Testar as regras no postman
+
+### 26/02
+
+ #### 23º aula - Criando uma imagem do Docker pequena da nossa aplicação em Golang
+   * Criar uma branch no github para fazer o processo de criação da imagem
+   * Criar a imagem de nosso projeto com o Dockerfile
+   * Reduzir o tamanho da imagem, compilando apenas o necessário. 
+      * A redução será de mais de 500mb para apenas 22mb
