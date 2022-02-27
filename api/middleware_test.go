@@ -20,8 +20,9 @@ func adcAutorizacao(
 	nome_usuario string,
 	duracao time.Duration,
 ) {
-	token, err := tokenMaker.CriarToken(nome_usuario, duracao)
+	token, payload, err := tokenMaker.CriarToken(nome_usuario, duracao)
 	require.NoError(t, err)
+	require.NotEmpty(t, payload)
 
 	authorizationHeader := fmt.Sprintf("%s %s", authorizationType, token)
 	request.Header.Set(authorizationHeaderKey, authorizationHeader)

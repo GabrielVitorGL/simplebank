@@ -107,7 +107,7 @@ func (servidor *Servidor) logarUsuario(ctx *gin.Context) {
 		return
 	}
 
-	accessToken, err := servidor.tokenMaker.CriarToken(
+	accessToken, _, err := servidor.tokenMaker.CriarToken(
 		usuario.NomeUsuario,
 		servidor.config.AccessTokenDuration,
 	)
