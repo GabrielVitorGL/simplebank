@@ -259,3 +259,11 @@ Simplebank project using Golang
    * Criar o banco de dados do nosso projeto no AWS
    * Tornar possível conectar a esse banco de dados em qualquer lugar
    * Conectar e executar o comando para criar as tabelas nesse banco de dados
+
+ #### 29º aula - Usando o AWS Secrets Manager para armazenar e utilizar segredos criptografados
+   * Criar as chaves para nossas variáveis no Secrets Manager
+   * Instalar e configurar o AWS CLI no nosso computador
+   * Executar o comando que criará o arquivo com as chaves que definimos antes
+   * Utilizar o JQ para organizarr o arquivo com as chaves que o AWS irá criar
+   * Fazer com que o github actions substitua essas variáveis para nós
+   * Baixar a imagem para ver se há erros ou não
