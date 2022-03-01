@@ -243,3 +243,13 @@ Simplebank project using Golang
 
  #### 26º aula - Criando uma conta gratuita no Amazon Web Services
    * Criar uma conta gratuita no serviço de processamento em nuvem da amazon para usarmos com o nosso projeto
+
+### 28/02
+
+ #### 27º aula - Criando e enviando a imagem docker automaticamente para o AWS usando o github actions
+   * Usar o Amazon ECR para criar um repositório no AWS para nosso projeto
+   * Fazer o arquivo deploy.yml que conterá os passos para automatizar o processo no github actions
+   * Utilizar o IAM para obtermos as acess keys
+   * Criar um grupo com as permissões necessárias para o github conseguir acessar os serviços da amazon
+   * Criptografar as duas acess keys que teremos que colocar no arquivo, pois não podemos colocar diretamente no arquivo por questões de segurança. Utilizaremos a funcionalidade "secrets" do próprio github
+   * Testar se tudo está funcionando e a action está criando e enviando a imagem automaticamente para o ECR
