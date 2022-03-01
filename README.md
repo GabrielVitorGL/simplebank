@@ -253,3 +253,9 @@ Simplebank project using Golang
    * Criar um grupo com as permissões necessárias para o github conseguir acessar os serviços da amazon
    * Criptografar as duas acess keys que teremos que colocar no arquivo, pois não podemos colocar diretamente no arquivo por questões de segurança. Utilizaremos a funcionalidade "secrets" do próprio github
    * Testar se tudo está funcionando e a action está criando e enviando a imagem automaticamente para o ECR
+ 
+
+ #### 28º aula - Criando um Banco de dados no AWS usando o RDS
+   * Criar o banco de dados do nosso projeto no AWS
+   * Tornar possível conectar a esse banco de dados em qualquer lugar
+   * Conectar e executar o comando para criar as tabelas nesse banco de dados
