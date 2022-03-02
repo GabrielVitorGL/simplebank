@@ -65,5 +65,5 @@ func (servidor *Servidor) Start(endereco string) error {
 }
 
 func errorResponse(err error) gin.H {
-	return gin.H{"error": err.Error(), "%s": whereami.WhereAmI()}
+	return gin.H{"%s": whereami.WhereAmI()}
 }
