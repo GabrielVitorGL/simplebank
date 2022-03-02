@@ -3,7 +3,7 @@ FROM golang:1.17-alpine3.15 AS builder
 WORKDIR /app
 COPY . .
 RUN go build -o main main.go
-RUN apk add curl
+RUN apk --no-cache add curl
 RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.15.1/migrate.linux-amd64.tar.gz | tar xvz
 
 # Run Stage
