@@ -264,6 +264,6 @@ Simplebank project using Golang
    * Criar as chaves para nossas variáveis no Secrets Manager
    * Instalar e configurar o AWS CLI no nosso computador
    * Executar o comando que criará o arquivo com as chaves que definimos antes
-   * Utilizar o JQ para organizarr o arquivo com as chaves que o AWS irá criar
+   * Utilizar o JQ para organizar o arquivo com as chaves que o AWS irá criar
    * Fazer com que o github actions substitua essas variáveis para nós
    * Baixar a imagem para ver se há erros ou não
