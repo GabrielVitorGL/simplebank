@@ -40,4 +40,4 @@ mock:
 simplebank:
 	docker run --name simplebank --network bank-network -p 8080:8080 -e GIN_MODE=release -e DB_SOURCE="postgresql://root:pass412@postgres14:5432/simple_bank?sslmode=disable" simplebank:latest
 	
-.PHONY: postgres stopps removeps createdb dropdb migrateup migrateup1 migratedown migratedown1 sqlc test server mock simplebank migrateupaws
+.PHONY: postgres stopps removeps createdb dropdb migrateup migrateup1 migratedown migratedown1 sqlc test server mock simplebank
