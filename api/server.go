@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
+	"github.com/jimlawless/whereami"
 	db "github.com/techschool/simplebank/db/sqlc"
 	"github.com/techschool/simplebank/token"
 	"github.com/techschool/simplebank/util"
@@ -64,5 +65,5 @@ func (servidor *Servidor) Start(endereco string) error {
 }
 
 func errorResponse(err error) gin.H {
-	return gin.H{"error": err.Error()}
+	return gin.H{"error": err.Error(), "%s": whereami.WhereAmI()}
 }
