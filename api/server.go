@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
-	"github.com/jimlawless/whereami"
 	db "github.com/techschool/simplebank/db/sqlc"
 	"github.com/techschool/simplebank/token"
 	"github.com/techschool/simplebank/util"
@@ -60,10 +59,9 @@ func (servidor *Servidor) configurarRoteador() {
 
 // Começa a rodar o server HTTP em um endereço específico
 func (servidor *Servidor) Start(endereco string) error {
-	endereco_corrigido := strings.TrimRight(endereco, "\r")
-	return servidor.roteador.Run(endereco_corrigido)
+	return servidor.roteador.Run(endereco)
 }
 
 func errorResponse(err error) gin.H {
-	return gin.H{"%s": whereami.WhereAmI()}
+	return gin.H{"error": err.Error()}
 }
