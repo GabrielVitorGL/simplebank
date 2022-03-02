@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
@@ -58,7 +59,8 @@ func (servidor *Servidor) configurarRoteador() {
 
 // Começa a rodar o server HTTP em um endereço específico
 func (servidor *Servidor) Start(endereco string) error {
-	return servidor.roteador.Run(endereco)
+	endereco_corrigido := strings.TrimRight(endereco, "\r")
+	return servidor.roteador.Run(endereco_corrigido)
 }
 
 func errorResponse(err error) gin.H {
