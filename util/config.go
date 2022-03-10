@@ -9,11 +9,11 @@ import (
 // Config irá guardar todas as configurações da aplicação
 // Os valores serão lidos pelo viper de um arquivo config ou uma variável de ambiente
 type Config struct {
-	DBDriver           string        `mapstructure:"DB_DRIVER"`
-	DBSource           string        `mapstructure:"DB_SOURCE"`
-	EnderecoServidor   string        `mapstructure:"ENDERECO_SERVIDOR"`
-	TokenSymmetricKey  string        `mapstructure:"TOKEN_SYMMETRIC_KEY"`
-	AccessTokenDuration time.Duration `mapstructure:"ACESS_TOKEN_DURATION"`
+	DBDriver            string        `mapstructure:"DB_DRIVER"`
+	DBSource            string        `mapstructure:"DB_SOURCE"`
+	ServerAdress        string        `mapstructure:"SERVER_ADDRESS"`
+	TokenSymmetricKey   string        `mapstructure:"TOKEN_SYMMETRIC_KEY"`
+	AccessTokenDuration time.Duration `mapstructure:"ACCESS_TOKEN_DURATION"`
 }
 
 func CarregarConfig(caminho string) (config Config, err error) {

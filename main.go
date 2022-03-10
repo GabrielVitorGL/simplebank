@@ -26,7 +26,7 @@ func main() {
 		log.Fatal("nao foi possivel criar o servidor")
 	}
 
-	err = servidor.Start(config.EnderecoServidor)
+	err = servidor.Start(config.ServerAdress)
 	if err != nil {
 		log.Fatal("nao foi possivel iniciar o servidor", err)
 	}
