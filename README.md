@@ -267,3 +267,24 @@ Simplebank project using Golang
    * Utilizar o JQ para organizar o arquivo com as chaves que o AWS irá criar
    * Fazer com que o github actions substitua essas variáveis para nós
    * Baixar a imagem para ver se há erros ou não
+
+### 20/03
+
+ #### 30º aula - Arquitetura do Kubernetes e Criando um EKS Cluester no AWS
+   * Kubernetes é uma engine de organização de containers, para fazer o deploy, scaling e a gestão de uma aplicação em um container automaticamente
+   * Iremos criar um Cluster na aba EKS da amazon
+       * Como não temos nenhuma função de serviço do cluster, iremos criar uma
+   * Criaremos com a opção de acesso "Público e privado", pois a opção pública pode não ser tão segura, e esta é o nível moderado
+   * Após criado, vamos configurar o grupo de nós
+   * Precisaremos criar outra função de serviço que conterá as permições necessárias, sendo elas:
+       * AmazonEKS_CNI_Policy
+       * AmazonEKSWorkerNodePolicy
+       * AmazonEC2ContainerRegistryReadOnly
+      
+ #### 31º aula - Usando o Kubectl e K9s para se conectar em um cluster do kubernetes
+   * Fazer o download do Kubectl
+   * Configurar o Kubectl com o nosso cluster que criamos na aula 30
+   * Instalr o K9s para a visualização dos clusters
+ 
+ #### 32º aula - Integração do cluster do kubernetes com uma aplicação web 
+   * 
