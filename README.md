@@ -286,5 +286,30 @@ Simplebank project using Golang
    * Configurar o Kubectl com o nosso cluster que criamos na aula 30
    * Instalr o K9s para a visualização dos clusters
  
- #### 32º aula - Integração do cluster do kubernetes com uma aplicação web 
-   * 
+ #### 32º aula - Criar uma aplicação web com um cluster do kubernetes
+   * Criar o arquivo deployment.yaml que fará o deploy automaticamente
+   * Fazer os testes e visualizar no k9s
+   * Configurar para que possamos acessar o servidor de nosso computador
+   * Testar o server no postman
+ 
+ #### 33º aula - Registrar um domínio e configurar o A-record usando o Route53
+   * ***Obs: Acompanhando apenas pelo vídeo***
+   * *Registrar um domínio usando o Route53*
+   * *Criar um record que pegue o ip automaticamente para usar com nossa aplicação*
+  
+ #### 34º aula - Usar o Ingress para rotear tráfegos para diferentes serviços no Kubernetes
+   * ***Obs: Acompanhando pelo vídeo, por ser relacionado a um domínio***
+   * *Criar o arquivo ingress.yaml que configurará automaticamente o record caso fossemos trabalhar com vários serviços*
+   * *Criar um Ingress Controllers para podermos se conectar no servidor*
+   
+ #### 35º aula - Gerar certificados TLS automaticamente para o Kubernetes usando o Let's Encrypt
+   * Instalar o cert-manager no Kubernetes
+   * Configurar o Let's Encrypt com o arquivo ingress.yaml
+   * Testar no Postman
+
+ #### 36º aula - Fazer o deploy para o Kubernetes automaticamente com o Github Actions
+   * Utilizaremos o Kubectl tool installer para fazer isso
+   * Adicionar no arquivo deploy.yml os passos para fazer o deploy
+   * Configurar para sempre utilizar a ultima versão da nossa aplicação
+   * Fazer o commit para o github e testar
+   * Testar no Postman
