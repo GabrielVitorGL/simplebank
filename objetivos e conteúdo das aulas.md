@@ -259,3 +259,68 @@ Simplebank project using Golang
    * Criar o banco de dados do nosso projeto no AWS
    * Tornar possível conectar a esse banco de dados em qualquer lugar
    * Conectar e executar o comando para criar as tabelas nesse banco de dados
+
+ #### 29º aula - Usando o AWS Secrets Manager para armazenar e utilizar segredos criptografados
+   * Criar as chaves para nossas variáveis no Secrets Manager
+   * Instalar e configurar o AWS CLI no nosso computador
+   * Executar o comando que criará o arquivo com as chaves que definimos antes
+   * Utilizar o JQ para organizar o arquivo com as chaves que o AWS irá criar
+   * Fazer com que o github actions substitua essas variáveis para nós
+   * Baixar a imagem para ver se há erros ou não
+
+### 20/03
+
+ #### 30º aula - Arquitetura do Kubernetes e Criando um EKS Cluester no AWS
+   * Kubernetes é uma engine de organização de containers, para fazer o deploy, scaling e a gestão de uma aplicação em um container automaticamente
+   * Iremos criar um Cluster na aba EKS da amazon
+       * Como não temos nenhuma função de serviço do cluster, iremos criar uma
+   * Criaremos com a opção de acesso "Público e privado", pois a opção pública pode não ser tão segura, e esta é o nível moderado
+   * Após criado, vamos configurar o grupo de nós
+   * Precisaremos criar outra função de serviço que conterá as permições necessárias, sendo elas:
+       * AmazonEKS_CNI_Policy
+       * AmazonEKSWorkerNodePolicy
+       * AmazonEC2ContainerRegistryReadOnly
+      
+ #### 31º aula - Usando o Kubectl e K9s para se conectar em um cluster do kubernetes
+   * Fazer o download do Kubectl
+   * Configurar o Kubectl com o nosso cluster que criamos na aula 30
+   * Instalr o K9s para a visualização dos clusters
+ 
+ #### 32º aula - Criar uma aplicação web com um cluster do kubernetes
+   * Criar o arquivo deployment.yaml que fará o deploy automaticamente
+   * Fazer os testes e visualizar no k9s
+   * Configurar para que possamos acessar o servidor de nosso computador
+   * Testar o server no postman
+ 
+ #### 33º aula - Registrar um domínio e configurar o A-record usando o Route53
+   * ***Obs: Acompanhando apenas pelo vídeo***
+   * *Registrar um domínio usando o Route53*
+   * *Criar um record que pegue o ip automaticamente para usar com nossa aplicação*
+  
+ #### 34º aula - Usar o Ingress para rotear tráfegos para diferentes serviços no Kubernetes
+   * ***Obs: Acompanhando pelo vídeo, por ser relacionado a um domínio***
+   * *Criar o arquivo ingress.yaml que configurará automaticamente o record caso fossemos trabalhar com vários serviços*
+   * *Criar um Ingress Controllers para podermos se conectar no servidor*
+   
+ #### 35º aula - Gerar certificados TLS automaticamente para o Kubernetes usando o Let's Encrypt
+   * Instalar o cert-manager no Kubernetes
+   * Configurar o Let's Encrypt com o arquivo ingress.yaml
+   * Testar no Postman
+
+ #### 36º aula - Fazer o deploy para o Kubernetes automaticamente com o Github Actions
+   * Utilizaremos o Kubectl tool installer para fazer isso
+   * Adicionar no arquivo deploy.yml os passos para fazer o deploy
+   * Configurar para sempre utilizar a ultima versão da nossa aplicação
+   * Fazer o commit para o github e testar
+   * Testar no Postman
+   
+ #### 37º aula - Gerenciar a sessão do usuário com um refresh token
+   * Criar um refresh token que fará com que o usuário não precise ficar fazendo o login toda hora que o token de acesso expirar, no caso de 15 em 15 minutos
+   * Criar a tabela "secao" no banco de dados
+   * Atualizar os arquivos para funcionarem com o refresh token
+   * Fazer o arquivo token.go para renovar o nosso token
+   * Criar o método para executar essa função
+   
+   | Função         | Método | URL do request                       | Customizações                                     |
+   | -------------- | ------ | ------------------------------------ | ------------------------------------------------- |
+   | Renovar acesso | POST   | http://localhost:8080/tokens_renovar_acesso | Body > raw > JSON > definir: refresh_token |

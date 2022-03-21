@@ -313,3 +313,14 @@ Simplebank project using Golang
    * Configurar para sempre utilizar a ultima versão da nossa aplicação
    * Fazer o commit para o github e testar
    * Testar no Postman
+   
+ #### 37º aula - Gerenciar a sessão do usuário com um refresh token
+   * Criar um refresh token que fará com que o usuário não precise ficar fazendo o login toda hora que o token de acesso expirar, no caso de 15 em 15 minutos
+   * Criar a tabela "secao" no banco de dados
+   * Atualizar os arquivos para funcionarem com o refresh token
+   * Fazer o arquivo token.go para renovar o nosso token
+   * Criar o método para executar essa função
+   
+   | Função         | Método | URL do request                       | Customizações                                     |
+   | -------------- | ------ | ------------------------------------ | ------------------------------------------------- |
+   | Renovar acesso | POST   | http://localhost:8080/tokens_renovar_acesso | Body > raw > JSON > definir: refresh_token |
