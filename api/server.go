@@ -43,6 +43,7 @@ func (servidor *Servidor) configurarRoteador() {
 
 	roteador.POST("/usuarios", servidor.criarUsuario)
 	roteador.POST("/usuarios/login", servidor.logarUsuario)
+	roteador.POST("/tokens/renovar_acesso", servidor.renewAccessToken)
 
 	authRoutes := roteador.Group("/").Use(authMiddleware(servidor.tokenMaker))
 

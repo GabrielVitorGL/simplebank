@@ -4,6 +4,8 @@ package db
 
 import (
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type Conta struct {
@@ -20,6 +22,17 @@ type Mudanca struct {
 	// esse valor pode ser negativo ou positivo
 	Quantia  int64     `json:"quantia"`
 	CriadaEm time.Time `json:"criada_em"`
+}
+
+type Seco struct {
+	ID           uuid.UUID `json:"id"`
+	NomeUsuario  string    `json:"nome_usuario"`
+	RefreshToken string    `json:"refresh_token"`
+	UserAgent    string    `json:"user_agent"`
+	ClientIp     string    `json:"client_ip"`
+	IsBlocked    bool      `json:"is_blocked"`
+	ExpiraEm     time.Time `json:"expira_em"`
+	CriadaEm     time.Time `json:"criada_em"`
 }
 
 type Transferencia struct {

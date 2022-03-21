@@ -4,16 +4,20 @@ package db
 
 import (
 	"context"
+
+	"github.com/google/uuid"
 )
 
 type Querier interface {
 	AdicionarSaldoConta(ctx context.Context, arg AdicionarSaldoContaParams) (Conta, error)
 	AtualizarConta(ctx context.Context, arg AtualizarContaParams) (Conta, error)
+	CreateSession(ctx context.Context, arg CreateSessionParams) (Seco, error)
 	CriarConta(ctx context.Context, arg CriarContaParams) (Conta, error)
 	CriarMudanca(ctx context.Context, arg CriarMudancaParams) (Mudanca, error)
 	CriarTransferencia(ctx context.Context, arg CriarTransferenciaParams) (Transferencia, error)
 	CriarUsuario(ctx context.Context, arg CriarUsuarioParams) (Usuario, error)
 	DeletarConta(ctx context.Context, id int64) error
+	GetSession(ctx context.Context, id uuid.UUID) (Seco, error)
 	ListarContas(ctx context.Context, arg ListarContasParams) ([]Conta, error)
 	ListarMudancas(ctx context.Context, arg ListarMudancasParams) ([]Mudanca, error)
 	ListarTransferencias(ctx context.Context, arg ListarTransferenciasParams) ([]Transferencia, error)
